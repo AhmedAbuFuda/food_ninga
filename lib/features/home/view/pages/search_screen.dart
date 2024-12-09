@@ -23,18 +23,27 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController controller = TextEditingController();
   List<RestaurantModel> allRestaurants = [];
   List<MenuModel> allItemsmenues = [];
+  List<RestaurantModel> searchRestaurants = [];
+  List<MenuModel> searchItemsmenues = [];
   @override
   Widget build(BuildContext context) {
     void onSearch(String value) {
-      allRestaurants = allRestaurants
-          .where((element) => element.name.toLowerCase().startsWith(value))
-          .toList();
-      allItemsmenues = allItemsmenues
-          .where((element) => element.item.toLowerCase().startsWith(value))
-          .toList();
-      setState(() {});
+      if (value.isNotEmpty) {
+        searchRestaurants = allRestaurants
+            .where((element) => element.name.toLowerCase().startsWith(value))
+            .toList();
+        searchItemsmenues = allItemsmenues
+            .where((element) => element.item.toLowerCase().startsWith(value))
+            .toList();
+        setState(() {});
+      } else {
+        searchRestaurants = [];
+        searchItemsmenues = [];
+        setState(() {});
+      }
     }
 
+    print('${searchRestaurants.length} +" "+ ${searchItemsmenues.length}');
     return BlocProvider(
       create: (context) =>
           RestaurantBloc(RestaurantRepo())..add(FetchNearestRestaurants()),
@@ -75,24 +84,26 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     const SelectedFillter(),
                     (state.typeFillter.isEmpty)
-                        ? (controller.text.isNotEmpty &&
-                                allRestaurants.isNotEmpty)
-                            ? PopularRestaurant(restaurants: allRestaurants)
-                            : (allItemsmenues.isNotEmpty &&
-                                    controller.text.isNotEmpty)
-                                ? PopularMenu(menues: allItemsmenues)
-                                : const SizedBox()
+                        ? Column(
+                            children: [
+                              (searchRestaurants.isNotEmpty)
+                                  ? PopularRestaurant(
+                                      restaurants: searchRestaurants)
+                                  : const SizedBox(),
+                              (searchItemsmenues.isNotEmpty)
+                                  ? PopularMenu(menues: searchItemsmenues)
+                                  : const SizedBox(),
+                            ],
+                          )
                         : const SizedBox(),
                     (state.typeFillter.contains('Restaurant'))
-                        ? (controller.text.isNotEmpty &&
-                                allRestaurants.isNotEmpty)
-                            ? PopularRestaurant(restaurants: allRestaurants)
+                        ? (searchRestaurants.isNotEmpty)
+                            ? PopularRestaurant(restaurants: searchRestaurants)
                             : const SizedBox()
                         : const SizedBox(),
                     (state.typeFillter.contains('Menu'))
-                        ? (controller.text.isNotEmpty &&
-                                allItemsmenues.isNotEmpty)
-                            ? PopularMenu(menues: allItemsmenues)
+                        ? (searchItemsmenues.isNotEmpty)
+                            ? PopularMenu(menues: searchItemsmenues)
                             : const SizedBox()
                         : const SizedBox(),
                   ],
