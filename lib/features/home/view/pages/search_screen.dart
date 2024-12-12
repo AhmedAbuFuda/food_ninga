@@ -43,7 +43,6 @@ class _SearchScreenState extends State<SearchScreen> {
       }
     }
 
-    print('${searchRestaurants.length} +" "+ ${searchItemsmenues.length}');
     return BlocProvider(
       create: (context) =>
           RestaurantBloc(RestaurantRepo())..add(FetchNearestRestaurants()),
