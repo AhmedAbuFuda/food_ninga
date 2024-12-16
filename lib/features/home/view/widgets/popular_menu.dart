@@ -26,7 +26,10 @@ class PopularMenu extends StatelessWidget {
               } else {
                 final meanu = state.restaurants.map((e) => e.menu).toList();
                 return Column(
-                  children: meanu.map((e) => MenuItem(item: e[0])).toList(),
+                  children: meanu
+                      .sublist(0, 4)
+                      .map((e) => MenuItem(item: e[0]))
+                      .toList(),
                 );
               }
             } else if (state is RestaurantError) {

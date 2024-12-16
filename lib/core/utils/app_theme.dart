@@ -25,7 +25,7 @@ ThemeData appTheme(BuildContext context) {
         color: Color.fromRGBO(59, 59, 59, 1),
       ),
       titleLarge: const TextStyle(
-        fontSize: 31.0,
+        fontSize: 29.0,
         fontFamily: 'BentonSansBold',
         color: Color.fromRGBO(9, 5, 28, 1),
       ),

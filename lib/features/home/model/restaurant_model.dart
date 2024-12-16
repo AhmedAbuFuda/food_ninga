@@ -34,7 +34,8 @@ class RestaurantModel {
       'logo': logo,
       'longitude': longitude,
       'menu': menu.map((e) => e.toJson()).toList(),
-      'name': name
+      'name': name,
+      'time': time
     };
   }
 }

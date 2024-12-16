@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'location_event.dart';
 part 'location_state.dart';
@@ -29,6 +30,9 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       }
 
       final position = await Geolocator.getCurrentPosition();
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setDouble('latitude', position.latitude);
+      await prefs.setDouble('longitude', position.longitude);
       emit(LocationLoaded(position));
     } catch (e) {
       emit(LocationError(e.toString()));

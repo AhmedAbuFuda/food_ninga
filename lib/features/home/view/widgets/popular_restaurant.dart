@@ -26,7 +26,7 @@ class PopularRestaurant extends StatelessWidget {
                   return PopularResturentView(restaurants: restaurants!);
                 } else {
                   return PopularResturentView(
-                    restaurants: state.restaurants,
+                    restaurants: state.restaurants.sublist(0, 4),
                   );
                 }
               } else if (state is RestaurantError) {

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchTab extends StatelessWidget {
-  const SearchTab({super.key, this.controller, this.onChangedText});
+  const SearchTab({super.key, this.controller, this.onChangedText, this.enable});
   final TextEditingController? controller;
   final void Function(String)? onChangedText;
+  final bool? enable;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class SearchTab extends StatelessWidget {
         onChanged: (value) {
           onChangedText!(value);
         },
+        enabled: enable,
       ),
     );
   }

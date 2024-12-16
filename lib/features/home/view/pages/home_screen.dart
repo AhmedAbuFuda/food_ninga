@@ -9,11 +9,13 @@ import 'package:food_ninja/features/home/view/widgets/popular_restaurant.dart';
 import 'package:food_ninja/features/home/view/widgets/promo_advertising.dart';
 import 'package:food_ninja/features/home/view/widgets/search_filiter_home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_ninja/test.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    //testFirebase();
     return MultiBlocProvider(
       providers: [
         BlocProvider(

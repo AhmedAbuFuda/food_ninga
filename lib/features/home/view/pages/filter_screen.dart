@@ -21,7 +21,7 @@ class FilterScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     HomeHeader(),
-                    SearchTab(),
+                    SearchTab(enable: false,),
                     ChipSelectionWidget(),
                   ],
                 ),
