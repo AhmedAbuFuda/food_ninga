@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:food_ninja/features/home/model/menu_model.dart';
 import 'package:food_ninja/features/home/model/restaurant_model.dart';
+import 'package:food_ninja/features/home/model/review_model.dart';
 
 void testFirebase() async {
   final restaurantRef = FirebaseFirestore.instance
@@ -12,29 +13,55 @@ void testFirebase() async {
       );
 
   restaurantRef.add(RestaurantModel(
-    latitude: 31.228546,
-    logo:
-        'https://scontent.fcai20-5.fna.fbcdn.net/v/t39.30808-6/347137969_1682945488824698_8717883971510180764_n.png?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=mYAYrzmc1rIQ7kNvgEo8zzn&_nc_zt=23&_nc_ht=scontent.fcai20-5.fna&_nc_gid=AX7REMEuXPT0HLIzqT2V45r&oh=00_AYDadXAZoghfx9WRzfBjVH4WLxxXuQ2-KVMxQEsIdPubJg&oe=6764AB7C',
-    longitude: 30.102384,
-    menu: [
-      MenuModel(
-        item: 'Qashtota',
-        image:
-            'https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-6/387234952_723147576521611_5310440522406075797_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5zY6bBpBDo0Q7kNvgExIUg7&_nc_zt=23&_nc_ht=scontent.fcai20-1.fna&_nc_gid=AORqq4OcFjO271n8LUWVQ2x&oh=00_AYBttS4Ag0_e1v0II3lq7LcCsQRPvqKLhlDyNBERG7vutg&oe=6764B7D1',
-        type: 'Dessert',
-        price: 70,
-        restaurant: 'B.Laban',
-      ),
-      MenuModel(
-        item: 'Hiba Dubai',
-        image:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4lPN6HZkYIByP0vGYtz3UUYvm1Z3tDFdkLw&s',
-        type: 'Cake',
-        price: 100,
-        restaurant: 'B.Laban',
-      )
-    ],
-    name: 'B.Laban',
-    time: 10,
-  ));
+      latitude: 31.208268,
+      longitude: 29.919635,
+      logo:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1YZ7sdMl03gzEHbcLx0EOMexX3PLVEhmNLA&s",
+      name: "The Crepery",
+      time: 8,
+      stars: 4.5,
+      description:
+          "The Crepery is a cozy and charming eatery in Egypt, known for its limited seating and welcoming atmosphere. Guests rave about the delicious offerings, including standout dishes like the amazing tomato soup, complemented by friendly and respectful service from the owner and staff.",
+      menu: [
+        MenuModel(
+            image:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgkSO9_qiwQtEe8xRV9MZGz8Ohizfhngk8Yw&s",
+            item: "Tsunami Chicken",
+            price: 135,
+            restaurant: "The Crepery",
+            type: "Main Course"),
+        MenuModel(
+            image:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOEA7BiFONQia5wksz0WtKwAxfy3XKWj7hfg&s",
+            item: "Sweet Crepes",
+            price: 120,
+            restaurant: "The Crepery",
+            type: "Dessert"),
+      ],
+      reviews: [
+        ReviewModel(
+            image:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5tghyngmtHxGLx1Dn5aO0Xvk4SBN9xvrxJw&s",
+            name: "Sarah Johnson",
+            date: "25 July 2024",
+            review:
+                "I had the ham & cheese crepe. It was delicious, but I felt it had too much diced ham. I enjoyed the cheese crepe after removing some of the ham.",
+            rate: 5),
+        ReviewModel(
+            image:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3WVmYbXwi09tHVUgdjgz5HtggaB9rhA3zrw&s",
+            name: "Mika",
+            date: "16 April 2024",
+            review:
+                "I tried the tomato basil crepe, and it really hit the spot! I’ve been into caprese lately, and this crepe was delicious",
+            rate: 4),
+        ReviewModel(
+            image:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxC3W8Nz3V5k4JCzJI14LzG5sEu_dJUWLvihbDltL81wrRN3ePMhgelzKehgvMy4Zpl6E&usqp=CAU",
+            name: "Emily Chen",
+            date: "10 June 2024",
+            review:
+                "I had the smoked salmon crepe, and it was fantastic. The flavors were well-balanced, and I was very satisfied with my meal.",
+            rate: 4),
+      ]));
 }

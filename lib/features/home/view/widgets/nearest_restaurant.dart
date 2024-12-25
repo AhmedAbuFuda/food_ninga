@@ -57,3 +57,12 @@ class NearestRestaurant extends StatelessWidget {
     );
   }
 }
+
+Widget shimmerWidget() => ClipRRect(
+      borderRadius: BorderRadius.circular(15.0),
+      child: Container(
+        color: Colors.black12,
+        height: 20,
+        width: 240,
+      ),
+    );

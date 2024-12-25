@@ -21,8 +21,6 @@ class MenuModel {
             price: json['price']! as int,
             type: json['type']! as String);
 
-  get name => null;
-
   Map<String, Object?> toJson() {
     return {
       'image': image,
